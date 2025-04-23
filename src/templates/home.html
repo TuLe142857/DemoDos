@@ -1,23 +1,174 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Wellcome</title>
-        <link rel="icon" type="image/x-icon" href="static/ptit.png">
-    </head>
-    <body>
-        <h1 style="color: red;">Thực hành môn An toàn và bảo mật hệ thống thông tin</h1>
-        <p>Hello world!</p>
-        <p>Trang web này dùng để demo </p>
-        <p>Mỗi lần trang được truy cập thì count += 1</p>
-        <h2>count = {{count}}</h2>
-        <p>
-            Thành viên nhóm gồm
-            <ul>
-                <li>Đặng Hữu Hiếu</li>
-                <li>Lý Hoàng Long</li>
-                <li>Lê Ngọc Tú</li>
-            </ul>
-        </p>        
-    </body>
+
+<head>
+    <title>Welcome</title>
+    <link rel="icon" type="image/x-icon" href="static/ptit.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #1d3557;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .team_member {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .member_card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 220px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .member_card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .member_card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid #1d3557;
+        }
+
+        .member_card h3 {
+            margin: 10px 0 5px;
+            color: #1d3557;
+        }
+
+        .member_card p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap; /* để đảm bảo responsive khi màn hình nhỏ */
+        }
+
+        .description {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .illustration {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .img-caption {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Thực hành môn An toàn và bảo mật hệ thống thông tin</h1>
+    <h2>Nhóm 18 gồm các thành viên:</h2>
+    <div class="team_member">
+        <div class="member_card">
+            <img src="static/doraemon.jpg" alt="Hieu">
+            <h3>Đặng Hữu Hiếu</h3>
+            <p>N22DCCN127</p>
+        </div>
+        <div class="member_card">
+            <img src="static/doraemon.jpg" alt="Long">
+            <h3>Lý Hoàng Long</h3>
+            <p>N22DCCN148</p>
+        </div>
+        <div class="member_card">
+            <img src="static/doraemon.jpg" alt="Tu">
+            <h3>Lê Ngọc Tú</h3>
+            <p>N22DCCN193</p>
+        </div>
+    </div>
+
+
+    <div class="content-wrapper">
+        <div class="description">
+            <p>Chủ đề nhóm chọn: Tấn công DoS (Slowloris)</p>
+        <ul>
+            <li>Slowloris làm tê liệt máy chủ web bằng cách mở nhiều kết nối HTTP nhưng không bao giờ hoàn thành chúng
+            </li>
+            <li>Slowloris gửi một yêu cầu HTTP không hoàn chỉnh đến máy chủ web.</li>
+            <li>Sau đó, nó duy trì kết nối mở bằng cách gửi các phần nhỏ của yêu cầu một cách từ từ, ngăn máy chủ đóng
+                kết nối.</li>
+            <li>Vì mỗi kết nối HTTP chiếm tài nguyên trên máy chủ, nên nếu có đủ số lượng kết nối kiểu này, máy chủ sẽ
+                hết tài nguyên để xử lý các kết nối thật từ người dùng.</li>
+            <li>Kết quả: Website bị "đóng băng" hoặc không thể truy cập được.</li>
+        </ul>
+
+        <p>Thực hiện</p>
+        <ul>
+            <li>Dùng WSL để chạy kali và ubuntu</li>
+            <li>Dùng ubuntu chạy một trang web đơn giản (tự viết bằng Python Flask)</li>
+            <li>Dùng kali thực hiện tấn công</li>
+        </ul>
+        </div>
+    
+        <div class="illustration">
+            <img src="static\slowloris-attack-diagram.png" 
+                 alt="Minh họa tấn công Slowloris">
+            <p class="img-caption">
+                Minh họa cách tấn công Slowloris  Nguồn: www.cloudflare.com
+            </p>
+        </div>
+    </div>
+</body>
 
 </html>
